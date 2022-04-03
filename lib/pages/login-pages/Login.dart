@@ -117,7 +117,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         onPressed: () {
-                          //animation
+                          //animation button
                           setState(() {
                             _isVisible = !_isVisible;
                           });
