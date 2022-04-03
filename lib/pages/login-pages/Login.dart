@@ -56,7 +56,7 @@ class _LoginState extends State<Login> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(300),
                         ),
-                        //animation
+                        //animation for the image
                         child: AnimatedOpacity(
                           opacity: _isVisible ? 1.0 : 0.0,
                           duration: Duration(milliseconds: 500),
