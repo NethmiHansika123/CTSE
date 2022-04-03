@@ -11,7 +11,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-    AuthService authService = AuthService();
+  bool _isVisible = false;
+  AuthService authService = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +52,21 @@ class _LoginState extends State<Login> {
                           fontWeight: FontWeight.w700),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(top: 20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(300),
-                      ),
-                      child: Center(
-                          child: Image.asset(
-                        "images/loginImg.png",
-                        width: size.width * 0.7,
-                      )),
-                    ),
+                        padding: const EdgeInsets.only(top: 20),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(300),
+                        ),
+                        //animation
+                        child: AnimatedOpacity(
+                          opacity: _isVisible ? 1.0 : 0.0,
+                          duration: Duration(milliseconds: 500),
+                          child: Center(
+                            child: Image.asset(
+                              "images/loginImg.png",
+                              width: size.width * 0.7,
+                            ),
+                          ),
+                        )),
                     TextField(
                       controller: authService.email,
                       decoration: InputDecoration(
@@ -111,6 +117,14 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                         onPressed: () {
+                          //animation
+                          setState(() {
+                            _isVisible = !_isVisible;
+                          });
+                          Tooltip:
+                          'Toggle Opacity';
+                          child:
+                          const Icon(Icons.flip);
                           if (authService.email != "" &&
                               authService.password != "") {
                             authService.loginUser(context);
